@@ -14,10 +14,24 @@
         android:id="@+id/leftFragment"
         android:name="com.example.basicnavigation.ui.left.LeftFragment"
         android:label="fragment_left"
-        tools:layout="@layout/fragment_left" />
+        tools:layout="@layout/fragment_left" >
+        <action
+            android:id="@+id/action_leftFragment_to_destinationFragment"
+            app:destination="@id/destinationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/rightFragment"
         android:name="com.example.basicnavigation.ui.right.RightFragment"
         android:label="fragment_right"
         tools:layout="@layout/fragment_right" />
+    <fragment
+        android:id="@+id/destinationFragment"
+        android:name="com.example.basicnavigation.ui.leftdestination.DestinationFragment"
+        android:label="fragment_destination"
+        tools:layout="@layout/fragment_destination" >
+        <argument
+            android:name="username_arg"
+            app:argType="string"
+            android:defaultValue="empty" />
+    </fragment>
 </navigation>
