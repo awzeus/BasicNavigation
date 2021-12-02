@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_home.xml" value="0.35" />
+        <entry key="app/src/main/res/drawable/ic_pokeball.xml" value="0.67" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3828125" />
         <entry key="app/src/main/res/layout/fragment_destination.xml" value="0.32447916666666665" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3828125" />

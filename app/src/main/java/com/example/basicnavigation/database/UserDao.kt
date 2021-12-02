@@ -17,6 +17,6 @@ interface UserDao {
     @Delete
     fun delete(user: UserEntity)
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun save(user: UserEntity)
 }

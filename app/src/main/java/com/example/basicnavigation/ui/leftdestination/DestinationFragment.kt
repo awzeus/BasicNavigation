@@ -1,27 +1,19 @@
 package com.example.basicnavigation.ui.leftdestination
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.basicnavigation.database.User
 import com.example.basicnavigation.databinding.FragmentDestinationBinding
 
 class DestinationFragment : Fragment() {
-
-
-
-    fun generateData(): List<User>{
-        var users = mutableListOf<User>()
-        for(x in 1..70){
-            users.add(User(x,"user${x}"))
-        }
-        return users
-    }
-
     private lateinit var binding: FragmentDestinationBinding
+    private val destinationViewModel: DestinationViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,11 +26,17 @@ class DestinationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val receivedUsername = arguments?.getString("username_arg")
         binding.tvReceivedArg.setText(receivedUsername)
+        
         binding.rvUserEntries.layoutManager = LinearLayoutManager(view?.context)
-        val adapter = DestinationAdapter(generateData())
-        binding.rvUserEntries.adapter = adapter
-
-
+        destinationViewModel.getUsers()
+        destinationViewModel.savedUsers.observe(viewLifecycleOwner,{ usersList ->
+            if(!usersList.isNullOrEmpty()){
+                val adapter = DestinationAdapter(usersList)
+                binding.rvUserEntries.adapter = adapter
+            }else{
+                Log.d("obtainedusers", "from fragment is null or empty")
+            }
+        })
     }
 
 
